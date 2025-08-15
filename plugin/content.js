@@ -215,7 +215,7 @@ class SmartScreenshot {
 
     // 智能扩展截图区域
     expandCaptureArea(element, rect) {
-        let padding = 20;
+        let padding = 50;
         let expandedRect = {
             x: rect.left - padding,
             y: rect.top - padding,
@@ -253,7 +253,7 @@ class SmartScreenshot {
     // 查找相关元素（选项、图片等）
     findRelatedElements(element) {
         const relatedElements = [];
-        const searchRadius = 300;
+        const searchRadius = 500;
         const elementRect = element.getBoundingClientRect();
         
         // 查找附近的选项元素
@@ -302,7 +302,7 @@ class SmartScreenshot {
     // 基于鼠标位置的截图
     async captureMouseBasedArea() {
         // 以鼠标为中心的智能区域
-        const areaSize = 400; // 截图区域大小
+        const areaSize = 800; // 截图区域大小
         const captureArea = {
             x: Math.max(0, this.mouseX - areaSize / 2),
             y: Math.max(0, this.mouseY - areaSize / 2),
