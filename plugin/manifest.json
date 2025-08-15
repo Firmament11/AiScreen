@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Stealthy Screenshot",
+  "version": "1.0",
+  "description": "Takes a screenshot of a specific area with a keyboard shortcut and copies it to the clipboard.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+"clipboardWrite"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "take-screenshot": {
+      "suggested_key": {
+        "default": "Alt+Q",
+        "mac": "Alt+Q"
+      },
+      "description": "Take a smart screenshot"
+    }
+  }
+}

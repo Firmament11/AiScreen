@@ -1,0 +1,5 @@
+fastapi
+uvicorn[standard]
+Pillow
+pypiwin32
+tencentcloud-sdk-python
