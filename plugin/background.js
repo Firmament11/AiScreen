@@ -1,14 +1,20 @@
+// 监听快捷键
 chrome.commands.onCommand.addListener((command) => {
-  if (command === "take-screenshot") {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      if (tabs[0]) {
-        chrome.scripting.executeScript({
-          target: { tabId: tabs[0].id },
-          files: ["content.js"],
+    if (command === "take-screenshot") {
+        // 获取当前活动标签页
+        chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+            if (tabs[0]) {
+                // 注入content script
+                chrome.scripting.executeScript({
+                    target: {tabId: tabs[0].id},
+                    files: ['content.js']
+                }, () => {
+                    // 发送截图消息到content script
+                    chrome.tabs.sendMessage(tabs[0].id, {action: "captureScreen"});
+                });
+            }
         });
-      }
-    });
-  }
+    }
 });
 
 // Listen for a message from the content script to take a screenshot
